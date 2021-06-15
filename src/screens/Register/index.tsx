@@ -5,6 +5,7 @@ import { Container, Header, Title, Form, Fields, TransactionTypes } from './styl
 
 import { Button } from '../../components/Forms/Button';
 import { TransactionTypeButton } from '../../components/Forms/TransactionTypeButton';
+import { CategorySelect } from '../../components/Forms/CategorySelect';
 
 export function Register(){
   const [ transactionType, setTransactionType ] = useState('');
@@ -39,7 +40,9 @@ export function Register(){
               onPress={() => handleTransactionTypeSelect('down')} 
             />
           </TransactionTypes>
-        
+
+          <CategorySelect title="Categoria" />
+
         </Fields>
         
 
