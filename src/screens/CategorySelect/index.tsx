@@ -2,8 +2,7 @@ import React from 'react';
 import { categories } from '../../utils/categories';
 import { Container, Header, Title, Category, Icon, Name, Separator, Footer } from './style';
 
-import { Button } from '../../components/Forms/Button';
-
+import { CategorySelectButton2 } from '../../components/Forms/CategorySelectButton2';
 import { FlatList } from 'react-native';
 
 interface Category {
@@ -46,7 +45,7 @@ export function CategorySelect({ category, setCategory, closeSelectCategory } : 
       />
 
       <Footer>
-        <Button title="Selecionar" onPress={closeSelectCategory}/>
+        <CategorySelectButton2 title="Selecionar" onPress={closeSelectCategory}/>
       </Footer>
     </Container>
   );
