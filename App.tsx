@@ -1,16 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import AppLoading from 'expo-app-loading';
-
 import 'react-native-gesture-handler';
+import { StatusBar } from 'react-native';
 
 import { theme } from './src/global/styles/theme';
-// import Dashboard from './src/screens/Dashboard';
-// import { Register } from './src/screens/Register';
-
-import { AppRoutes } from './src/routes/app.routes';
-
-import { NavigationContainer } from '@react-navigation/native';
+import { Routes } from './src/routes';
+import { AuthProvider, useAuth } from './src/hooks/auth';
 
 import {
   useFonts,
@@ -26,15 +22,19 @@ export default function App() {
     Poppins_700Bold
   })
 
-  if(!fontsLoaded){
+  const { userStorageLoading } = useAuth();
+
+  if(!fontsLoaded || userStorageLoading){
     return <AppLoading/>
   }
   
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <AppRoutes/>
-      </NavigationContainer>
+        <StatusBar barStyle="light-content" />
+        
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
     </ThemeProvider>
   );
 }
