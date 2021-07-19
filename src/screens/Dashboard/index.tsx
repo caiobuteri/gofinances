@@ -52,8 +52,6 @@ export default function Dashboard(){
 
   const { signOut, user } = useAuth();
 
-  console.log(user);
-
   function getLastTransactionDate(collection: DataListProps[], type: 'positive' | 'negative'){
 
     const collectionFilttered = collection
@@ -146,17 +144,6 @@ export default function Dashboard(){
     setTransactions(transactionsFormatted)
     setIsLoading(false);
   }
-
-  useEffect(() => {
-    // const dataKey = '@gofinances:transactions';
-    // AsyncStorage.removeItem(dataKey);
-
-    loadTransactions();
-  }, []);
-
-  useEffect(() => {
-    // console.log(highligthData)
-  }, [highligthData])
 
   useFocusEffect(useCallback(() => {
     loadTransactions();
